@@ -11,5 +11,5 @@
 	uma delas no final da corrida. Informar também quantos pulos cada uma delas deu.
 	Obs.: Só é permitido o uso de join() para thread main.
 
-3 -Escreva um programa que adicione elementos em uma lista de forma paralelizada.
+3 - Escreva um programa que adicione elementos em uma lista de forma paralelizada.
 	Qual a saída esperada? Qual a saída obtida?
