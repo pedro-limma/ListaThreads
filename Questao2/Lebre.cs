@@ -12,6 +12,7 @@ namespace Questao2
         public int DistanciaAtual { get; private set; } = 0;
         public string Name { get; private set; }
         public int QuantidadePulos { get; private set; }
+        public DateTime TempoFinalizacao { get; private set; }
 
         public Lebre(string name)
         {
@@ -20,14 +21,18 @@ namespace Questao2
 
         public void Saltar()
         {
-            var random = new Random().Next(1, 4);
+            while (DistanciaAtual <= 20)
+            {
+                var salto = new Random().Next(1, 4);
             
-            DistanciaAtual += random;
-            QuantidadePulos++;
+                DistanciaAtual += salto;
+                QuantidadePulos++;
 
-            Console.WriteLine($"Lebre {Name} pulou {random} metros");
-            Thread.Sleep(1000);
-
+                Console.WriteLine($"Lebre {Name} pulou {salto} metros");
+                Thread.Sleep(TimeSpan.FromSeconds(new Random().NextDouble() * salto));
+            }
+            TempoFinalizacao = DateTime.Now;
+            
         }
     }
 }
