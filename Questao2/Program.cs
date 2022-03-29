@@ -6,7 +6,11 @@ namespace Questao2
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Questao 2");
+            var corrida = new Corrida();
+
+            corrida.Largada();
+           
+            Console.ReadLine();
         }
     }
 }
