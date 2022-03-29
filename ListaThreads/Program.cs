@@ -1,41 +1,52 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace ListaThreads
 {
     internal class Program
     {
 
-        public static int TotalSum = 0;
         public static int[,] Groups =
-            {
-                { 1, 2, 3, 4, 5 },
-                { 6, 7, 8, 9, 10}
-            };
+        {
+            { 1, 2, 3, 4, 5 },
+            { 6, 7, 8, 9, 10}
+        };
+        public static List<int> ListSums = new List<int>();
+
+
         static void Main(string[] args)
         {
             //1
-            Thread t = new Thread(new ThreadStart(SumOfIndexes));
-            t.Start();
 
-            Console.WriteLine("Thread Principal fazendo Join() da Thread ");
-            Console.WriteLine("Pressione alguma tecla para continuar ...");
-            Console.ReadLine();
-            t.Join();
-            Console.WriteLine($"Retorno de SumOfIndexes: {TotalSum}");
-            Console.ReadLine();
+            Thread thread = new Thread(() => SumOfIdexes(Groups));
+
+            thread.Start();
+
+            thread.Join();
+
+            foreach (var itemSum in ListSums)
+            {
+                Console.WriteLine(itemSum);
+            }
+            Console.ReadKey();
         }
 
-        public static void SumOfIndexes()
+        private static void SumOfIdexes(int[,] indexes)
         {
-            for (int linha = 0; linha < 2; linha++)
+
+            for (var i = 0; i < 2; i++)
             {
-                for (int coluna = 0; coluna < 5; coluna++)
+                var sum = 0;
+                for (var j = 0; j < 5; j++)
                 {
-                    TotalSum += Groups[linha, coluna];
-                    Thread.Sleep(1);
+                    sum += indexes[i, j];
                 }
+                ListSums.Add(sum);
             }
+
         }
     }
 }
