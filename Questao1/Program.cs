@@ -1,26 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Threading;
-using System.Threading.Tasks;
 
-namespace ListaThreads
+namespace Questao1
 {
     internal class Program
     {
 
-        public static int[,] Groups =
+        public static int[,] Groups = new int[,]
         {
             { 1, 2, 3, 4, 5 },
             { 6, 7, 8, 9, 10}
         };
+
         public static List<int> ListSums = new List<int>();
 
 
         static void Main(string[] args)
         {
             //1
-
             Thread thread = new Thread(() => SumOfIdexes(Groups));
 
             thread.Start();
