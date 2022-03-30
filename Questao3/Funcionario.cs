@@ -20,5 +20,10 @@ namespace Questao3
         public int Idade { get; set; }
 
 
+        public override string ToString()
+        {
+            return $"Nome: {this.Name}, Funcao: {this.Role}, Idade: {this.Idade}";
+        }
+
     }
 }
